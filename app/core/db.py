@@ -19,15 +19,14 @@ class PreBase:
 Base = declarative_base(cls=PreBase)
 
 
-class PreBaseDonationCharity(PreBase):
+class PreBaseDonationCharity(Base):
     __abstract__ = True
 
-    full_amount = Column(Integer)
+    full_amount = Column(Integer, nullable=False)
     invested_amount = Column(Integer)
     fully_invested = Column(Boolean)
     create_date = Column(DateTime)
     close_date = Column(DateTime)
-
 
 
 engine = create_async_engine(settings.database_url)
