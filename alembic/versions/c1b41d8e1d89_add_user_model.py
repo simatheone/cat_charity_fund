@@ -1,9 +1,7 @@
 """Add user model
-
 Revision ID: c1b41d8e1d89
-Revises: 
+Revises:
 Create Date: 2022-09-12 22:53:38.558054
-
 """
 from alembic import op
 import sqlalchemy as sa

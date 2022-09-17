@@ -1,8 +1,8 @@
 """Add Donation model
 
-Revision ID: a80d271104fd
-Revises: b1583de3a833
-Create Date: 2022-09-13 21:08:37.818780
+Revision ID: cfc9576696b9
+Revises: 70ff4dc22329
+Create Date: 2022-09-17 17:38:35.687501
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a80d271104fd'
-down_revision = 'b1583de3a833'
+revision = 'cfc9576696b9'
+down_revision = '70ff4dc22329'
 branch_labels = None
 depends_on = None
 

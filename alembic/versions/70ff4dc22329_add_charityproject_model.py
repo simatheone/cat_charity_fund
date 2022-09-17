@@ -1,8 +1,8 @@
-"""Add ChrityProject model
+"""Add CharityProject model
 
-Revision ID: b1583de3a833
+Revision ID: 70ff4dc22329
 Revises: c1b41d8e1d89
-Create Date: 2022-09-13 21:02:56.251909
+Create Date: 2022-09-17 17:37:39.445190
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b1583de3a833'
+revision = '70ff4dc22329'
 down_revision = 'c1b41d8e1d89'
 branch_labels = None
 depends_on = None
