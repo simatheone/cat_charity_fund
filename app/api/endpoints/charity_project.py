@@ -14,6 +14,7 @@ from app.api.validators import (
     check_correct_full_amount_for_update,
     check_name_duplicate,
     check_project_was_closed,
+    check_project_was_invested,
 )
 from app.services.investment import investment_process
 
@@ -115,10 +116,10 @@ async def delete_charity_project(
     charity_project = await check_charity_project_exists(
         project_id, session
     )
-    await check_project_was_closed(project_id, session)
+    await check_project_was_invested(project_id, session)
     charity_project = await (
-        charityproject_crud.remove_charity_project_or_close_it(
-            object_id=project_id, session=session
+        charityproject_crud.remove(
+            charity_project, session
         )
     )
     return charity_project
