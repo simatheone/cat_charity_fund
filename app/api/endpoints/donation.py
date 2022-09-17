@@ -8,7 +8,7 @@ from app.core.db import get_async_session
 from app.core.user import current_user, current_superuser
 from app.models import User
 from app.schemas.donation import DonationCreate, DonationDB
-from app.services.investment import investment_process
+from app.services.investment import execute_investment_process
 
 EXCLUDE_FIELDS = (
     'user_id',
@@ -69,6 +69,6 @@ async def create_new_donation(
     new_donation = await donation_crud.create(
         donation, session, user
     )
-    await investment_process(new_donation, session)
+    await execute_investment_process(new_donation, session)
     await session.refresh(new_donation)
     return new_donation

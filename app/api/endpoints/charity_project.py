@@ -16,7 +16,7 @@ from app.api.validators import (
     check_project_was_closed,
     check_project_was_invested,
 )
-from app.services.investment import investment_process
+from app.services.investment import execute_investment_process
 
 router = APIRouter()
 
@@ -55,7 +55,7 @@ async def create_new_charity_project(
     new_charity_project = await charityproject_crud.create(
         charity_project, session
     )
-    await investment_process(
+    await execute_investment_process(
         new_charity_project, session
     )
     await session.refresh(new_charity_project)
