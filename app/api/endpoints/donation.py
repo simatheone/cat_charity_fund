@@ -8,7 +8,7 @@ from app.core.db import get_async_session
 from app.core.user import current_user, current_superuser
 from app.models import User
 from app.schemas.donation import DonationCreate, DonationDB
-from app.services.investment import investment_process_donation
+from app.services.investment import investment_process
 
 EXCLUDE_FIELDS = (
     'user_id',
@@ -55,17 +55,20 @@ async def get_my_donations(
 @router.post(
     '/',
     response_model=DonationDB,
-    response_model_exclude={*EXCLUDE_FIELDS}
+    response_model_exclude={*EXCLUDE_FIELDS},
+    response_model_exclude_none=True
 )
 async def create_new_donation(
     donation: DonationCreate,
     session: AsyncSession = Depends(get_async_session),
     user: User = Depends(current_user)
 ):
-    """"""
-    # Think about validation
-    await investment_process_donation(donation, session)
+    """Create New Donation.
+        Endpoint is available for registered and super users.
+    """
     new_donation = await donation_crud.create(
         donation, session, user
     )
+    await investment_process(new_donation, session)
+    await session.refresh(new_donation)
     return new_donation
