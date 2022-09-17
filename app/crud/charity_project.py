@@ -94,19 +94,5 @@ class CRUDCharityProject(
         await session.commit()
         return db_object
 
-    async def remove_charity_project_or_close_it(
-        self,
-        object_id: int,
-        session: AsyncSession
-    ):
-        project_investment = await session.execute(
-            select(CharityProject.invested_amount).where(
-                CharityProject.id == object_id
-            )
-        )
-        project_investment = project_investment.scalars().first()
-        if project_investment != 0:
-            ...
-
 
 charityproject_crud = CRUDCharityProject(CharityProject)
