@@ -7,6 +7,17 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.crud.charity_project import charityproject_crud
 from app.models import CharityProject
 
+PROJECT_NOT_FOUND_ERROR = 'Данный проект не найден!'
+PROJECT_EXISTS_ERROR = 'Проект с таким именем уже существует!'
+FORBIDDEN_UPDATE_ERROR = 'Закрытый проект нельзя редактировать!'
+INVESTED_RPOJECT_DELETION_ERROR = (
+    'В проект были внесены средства, не подлежит удалению!'
+)
+INVALID_INVESTED_AMOUNT_ERROR = (
+    'Новая требуемая сумма должна быть больше уже '
+    'внесенной в проект суммы - {project_invested_amount}'
+)
+
 
 async def check_charity_project_exists(
     project_id: int,
@@ -18,7 +29,7 @@ async def check_charity_project_exists(
     if not charity_project:
         raise HTTPException(
             status_code=HTTPStatus.UNPROCESSABLE_ENTITY,
-            detail='Данный проект не найден!'
+            detail=PROJECT_NOT_FOUND_ERROR
         )
     return charity_project
 
@@ -35,7 +46,7 @@ async def check_name_duplicate(
     if charity_project_id is not None:
         raise HTTPException(
             status_code=HTTPStatus.BAD_REQUEST,
-            detail='Проект с таким именем уже существует!'
+            detail=PROJECT_EXISTS_ERROR
         )
 
 
@@ -51,7 +62,7 @@ async def check_project_was_closed(
     if project_close_date:
         raise HTTPException(
             status_code=HTTPStatus.BAD_REQUEST,
-            detail='Закрытый проект нельзя редактировать!'
+            detail=FORBIDDEN_UPDATE_ERROR
         )
 
 
@@ -67,7 +78,7 @@ async def check_project_was_invested(
     if invested_project:
         raise HTTPException(
             status_code=HTTPStatus.BAD_REQUEST,
-            detail='В проект были внесены средства, не подлежит удалению!'
+            detail=INVESTED_RPOJECT_DELETION_ERROR
         )
 
 
@@ -84,8 +95,5 @@ async def check_correct_full_amount_for_update(
     if db_project_invested_amount > full_amount_to_update:
         raise HTTPException(
             status_code=HTTPStatus.UNPROCESSABLE_ENTITY,
-            detail=(
-                'Новая требуемая сумма должна быть больше уже '
-                f'внесенной в проект суммы - {db_project_invested_amount}'
-            )
+            detail=INVALID_INVESTED_AMOUNT_ERROR.format(db_project_invested_amount)
         )
