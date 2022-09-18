@@ -2,10 +2,9 @@ from typing import List
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.crud.base import CRUDBase
 
-from app.models import User
-from app.models import Donation
+from app.crud.base import CRUDBase
+from app.models import Donation, User
 from app.schemas.donation import DonationCreate
 
 
