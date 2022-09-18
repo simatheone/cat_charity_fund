@@ -11,7 +11,7 @@ class PreBase:
 
     @declared_attr
     def __tablename__(cls):
-        return cls.__name__.lower()     # pyright: ignore
+        return cls.__name__.lower()
 
     id = Column(Integer, primary_key=True)
 
@@ -34,5 +34,5 @@ AsyncSessionLocal = sessionmaker(engine, class_=AsyncSession)
 
 
 async def get_async_session():
-    async with AsyncSessionLocal() as async_session:    # pyright: ignore
+    async with AsyncSessionLocal() as async_session:
         yield async_session
