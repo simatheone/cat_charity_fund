@@ -117,23 +117,8 @@ cat_charity_fund:
 
 ## Заполнение .env файла
 
-```
-APP_TITLE=Your Project title
-APP_DESCRIPTION=Your Project description
-DATABASE_URL=your_database_url
-SECRET=Y0ur!$ecretKey8
-FIRST_SUPERUSER_EMAIL=example@example.com
-FIRST_SUPERUSER_PASSWORD=example
+Пример заполнения **.env** файла находится в файле **.env.example**
 
-Example:
-
-APP_TITLE=Charity Project
-APP_DESCRIPTION=Приложение для Благотворительного фонда поддержки котиков QRKot.
-DATABASE_URL=sqlite+aiosqlite:///./fastapi.db
-SECRET=Y0ur!$ecretKey8
-FIRST_SUPERUSER_EMAIL=admin@admin.com
-FIRST_SUPERUSER_PASSWORD=admin
-```
 
 ## Запуск проекта
 1. Клонировать репозиторий:
