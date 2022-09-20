@@ -13,6 +13,8 @@ from app.core.db import get_async_session
 from app.models.user import User
 from app.schemas.user import UserCreate
 
+JWT_TOKEN_LIFETIME = 3600
+
 
 class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
 
@@ -39,7 +41,7 @@ bearer_transport = BearerTransport(tokenUrl='auth/jwt/login')
 
 
 def get_jwt_strategy() -> JWTStrategy:
-    return JWTStrategy(secret=settings.secret, lifetime_seconds=3600)
+    return JWTStrategy(secret=settings.secret, lifetime_seconds=JWT_TOKEN_LIFETIME)
 
 
 auth_backend = AuthenticationBackend(
