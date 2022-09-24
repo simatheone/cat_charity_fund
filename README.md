@@ -1,4 +1,4 @@
-# QRKot
+# Cat Charity Fund
 
 ## Оглавление
 - [QRKot](#qrkot)
