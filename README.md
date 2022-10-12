@@ -1,7 +1,7 @@
-# Cat Charity Fund
+# Cat Charity Fund :coin:
 
 ## Оглавление
-- [Cat Charity Fund](#cat-charity-fund)
+- [Cat Charity Fund :coin:](#cat-charity-fund-coin)
   - [Оглавление](#оглавление)
   - [Используемые технологии](#используемые-технологии)
   - [Структура проекта](#структура-проекта)
@@ -13,7 +13,7 @@
   - [Запуск проекта](#запуск-проекта)
 
 ## Используемые технологии
-:snake: Python 3.10, FastAPI 0.78.0 FastAPI-Users 10.0.4 Pydantic 1.9.1 SQLAlchemy 1.4.36 aiosqlite 0.17.0 Alembic 1.7.7 Flake8 4.0.1
+:snake: Python 3.10, :incoming_envelope: FastAPI 0.78.0, :busts_in_silhouette: FastAPI-Users 10.0.4, Pydantic 1.9.1, :package: SQLAlchemy 1.4.36, :notebook: aiosqlite 0.17.0, :memo: Alembic 1.7.7, :white_check_mark: Flake8 4.0.1
 
 ## Структура проекта
 ```
